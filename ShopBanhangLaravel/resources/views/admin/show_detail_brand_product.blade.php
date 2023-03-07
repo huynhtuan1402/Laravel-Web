@@ -1,0 +1,37 @@
+@extends('admin_layout')
+@section('content')
+    <div class="row">
+        <div class="col-lg-12">
+            <section class="panel">
+                <header class="panel-heading">
+                    Chỉnh sửa thương hiệu
+                </header>
+                <?php
+                $message = session()->get('msg');
+                if ($message) {
+                    echo '<h3>' . $message . '</h3>';
+                }
+                ?>
+                <div class="panel-body">
+                    <div class="position-center">
+                        <form role="form" method="post" action="/update-brand-product/{{ $brand->brand_id }}">
+                            @csrf
+                            <div class="form-group">
+                                <label for="exampleInputEmail1">Tên thương hiệu</label>
+                                <input type="text" class="form-control" id="exampleInputEmail1" name="brand_name"
+                                    value="{{ $brand->brand_name }}">
+                            </div>
+                            <div class="form-group">
+                                <label for="exampleInputPassword1">Mô tả</label>
+                                <textarea style="resize: none" type="password" rows="5" class="form-control" id="exampleInputPassword1"
+                                    placeholder="Mô tả" name="brand_desc">{{ $brand->brand_desc }}</textarea>
+                            </div>
+                            <button type="submit" class="btn btn-info"
+                                onclick="return confirm('Bạn có muốn lưu??')">Lưu</button>
+                        </form>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </div>
+@endsection
