@@ -81,5 +81,3 @@ class AdminController extends Controller
         // return view('admin.show-detail-order')->with($data);
     }
 }
-
-// test github
